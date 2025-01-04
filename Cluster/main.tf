@@ -88,7 +88,7 @@ resource "aws_security_group" "devopsshack_node_sg" {
 
 resource "aws_eks_cluster" "devopsshack" {
   name     = "devopsshack-cluster"
-  role_arn = aws_iam_role.devopsshack_cluster_role.arn
+  role_arn = aws_iam_role.devopsshack_cluster_role1.arn
 
   vpc_config {
     subnet_ids         = aws_subnet.devopsshack_subnet[*].id
@@ -160,16 +160,16 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "devopsshack_node_group_role_policy" {
-  role       = aws_iam_role.devopsshack_node_group_role.name
+  role       = aws_iam_role.devopsshack_node_group_role1.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
 }
 
 resource "aws_iam_role_policy_attachment" "devopsshack_node_group_cni_policy" {
-  role       = aws_iam_role.devopsshack_node_group_role.name
+  role       = aws_iam_role.devopsshack_node_group_role1.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
 }
 
 resource "aws_iam_role_policy_attachment" "devopsshack_node_group_registry_policy" {
-  role       = aws_iam_role.devopsshack_node_group_role.name
+  role       = aws_iam_role.devopsshack_node_group_role1.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
 }
