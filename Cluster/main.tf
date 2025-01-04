@@ -116,7 +116,7 @@ resource "aws_eks_node_group" "devopsshack" {
   }
 }
 
-resource "aws_iam_role" "devopsshack_cluster_role" {
+resource "aws_iam_role" "devopsshack_cluster_role1" {
   name = "devopsshack-cluster-role"
 
   assume_role_policy = <<EOF
@@ -136,11 +136,11 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "devopsshack_cluster_role_policy" {
-  role       = aws_iam_role.devopsshack_cluster_role.name
+  role       = aws_iam_role.devopsshack_cluster_role1.name
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
 }
 
-resource "aws_iam_role" "devopsshack_node_group_role" {
+resource "aws_iam_role" "devopsshack_node_group_role1" {
   name = "devopsshack-node-group-role"
 
   assume_role_policy = <<EOF
